@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Form</title>
+
+    <link rel="icon" type="image/png" href="images/Dioma.jpg">
+
+    <link rel="stylesheet" href="/styles/stylesheet.css">
+</head>
+<body> 
+    <div>
+        <form action="/submit-contact" method="post">
+            <legend>Contact Form</legend>
+
+            <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" required>
+    
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" required>
+    
+                <label for="jtitle">Job Title</label>
+                <input type="text" id="jtitle" name="jtitle">
+    
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company">
+    
+                <label for="linkedin">LinkedIn URL</label>
+                <input type="url" id="linkedin" name="linkedin">
+    
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="location">How did we meet?</label>
+                <select name="location" id="location">
+                    <option value="none">Please select</option>
+                    <option value="meetup">Meetup</option>
+                    <option value="jfair">Job Fair</option>
+                    <option value="startupweek">Startup Week</option>
+                </select>
+    
+                <label for="other">Other (please specify)</label>
+                <input type="text" id="other" name="other">
+            </div>
+    
+            <div class="form-group full-width">
+                <label for="message">Message</label>
+                <input type="text" id="message" name="message">
+                <label>
+                    <input type="checkbox" name="adding-list" value="adding-list"> Please add me to your mailing list
+                </label>
+            </div>
+    
+            <div>
+                <label>Choose an email format:</label>
+                <label>
+                    <input type="radio" name="method" value="html"> HTML
+                </label>
+                <label>
+                    <input type="radio" name="method" value="text"> Text
+                </label>
+            </div>
+
+            <button class="submit-forum" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
