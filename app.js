@@ -14,10 +14,14 @@ app.get('/', (req,res) => {
     res.sendFile(`${import.meta.dirname}/views/home.html`);
 });
 
-app.post('/submit-order', (req, res) => {
+app.post('/submit-contact', (req, res) => {
     console.log(req.body);
     orders.push(req.body);
     res.sendFile(`${import.meta.dirname}/views/home.html`);
+});
+
+app.get('/admin/orders', (req, res) => {
+    res.send(orders)
 });
 
 app.listen(PORT, () => {

@@ -3,6 +3,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 20px;
+    font-weight: bold;
 }
 
 fieldset {
@@ -32,7 +33,6 @@ fieldset {
 
 legend {
     text-align: center;
-    font-weight: bold;
     padding: 10px;
     font-size: larger;
 }
