@@ -17,6 +17,12 @@ app.get('/', (req,res) => {
 app.post('/submit-contact', (req, res) => {
     console.log(req.body);
     orders.push(req.body);
+    res.sendFile(`${import.meta.dirname}/views/confirmed.html`);
+});
+
+app.post('/return-contact', (req, res) => {
+    console.log(req.body);
+    orders.push(req.body);
     res.sendFile(`${import.meta.dirname}/views/home.html`);
 });
 
