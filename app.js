@@ -1,17 +1,37 @@
 import express from 'express';
+import mariadb from 'mariadb';
+
+const pool = mariadb.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'pizza'
+});
+
+async function connect() {
+    try{
+        const conn = await pool.getConnection();
+        console.log('Connected to the database');
+        return conn;
+    }catch (err){
+        console.log(`Error connecting to the database ${err}`);
+    }
+}
 
 const app = express();
 
 app.use(express.static('public'));
 
-app.use(express.urlencoded({ extended: true }))
+app.set('view engine', 'ejs');
+
+// app.use(express.urlencoded({ extended: true }))
 
 const PORT = 3000;
 
 const orders = [];
 
 app.get('/', (req,res) => {
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+    res.render('home');
 });
 
 app.post('/submit-contact', (req, res) => {
