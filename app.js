@@ -1,30 +1,12 @@
 import express from 'express';
-import mariadb from 'mariadb';
-
-const pool = mariadb.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'pizza'
-});
-
-async function connect() {
-    try{
-        const conn = await pool.getConnection();
-        console.log('Connected to the database');
-        return conn;
-    }catch (err){
-        console.log(`Error connecting to the database ${err}`);
-    }
-}
 
 const app = express();
 
 app.use(express.static('public'));
 
-app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
 
-// app.use(express.urlencoded({ extended: true }))
+app.set('view engine', 'ejs');
 
 const PORT = 3000;
 
@@ -36,14 +18,22 @@ app.get('/', (req,res) => {
 
 app.post('/submit-contact', (req, res) => {
     console.log(req.body);
-    orders.push(req.body);
-    res.sendFile(`${import.meta.dirname}/views/confirmed.html`);
+    const { fname, lname, email } = req.body;
+
+    if (!fname || !lname || !email) {
+        return res.send('Invalid Input');
+    }
+
+    orders.push({ ...req.body, timestamp: new Date().toISOString() });
+
+    res.render('confirmed', { contact: req.body });
 });
 
 app.post('/return-contact', (req, res) => {
     console.log(req.body);
     orders.push(req.body);
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+    // res.sendFile(`${import.meta.dirname}/views/home.ejs`);
+    res.render('home', {contact: req.body})
 });
 
 app.get('/admin/orders', (req, res) => {
