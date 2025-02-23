@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/png" href="images/Dioma.jpg">
+    <link rel="stylesheet" href="/styles/stylesheet.css">
 </head>
 <body>
-    <h1>Order Summary</h1>
-
-    <% for (let i=0; i < orders.length; i++) { %>
-        <p><%= orders[i].fname %> <%= orders[i].lname %></p>
-        <p>email: <%= orders[i].email %> <br> Company: <%= orders[i].company%></p>
-        <p>location: <%= orders[i].location %> <br> Linkedin: <%= orders[i].linkedin %></p>
-        <hr>
-    <% } %>
+    <form action="/return-contact" method="post">
+        <fieldset>
+            <legend> Order Summary </legend>
+                <% for (let i=0; i < orders.length; i++) { %>
+                    <p><%= orders[i].fname %> <%= orders[i].lname %></p>
+                    <p>email: <%= orders[i].email %> <br> Company: <%= orders[i].company%></p>
+                    <p>location: <%= orders[i].location %> <br> Linkedin: <%= orders[i].linkedin %></p>
+                    <hr>
+                <% } %>
+        </fieldset>
+        <button class="submit-forum" type="submit">RETURN TO HOME</button>        
+    </form>
 </body>
 </html>
