@@ -37,7 +37,12 @@ app.post('/return-contact', (req, res) => {
 });
 
 app.get('/admin/', (req, res) => {
-    res.send(orders)
+
+    if(!orders || orders.length === 0) {
+        return res.send('<p>Empty Contact</p>');  
+    }
+
+    res.render('admin', { orders })
 });
 
 app.listen(PORT, () => {
