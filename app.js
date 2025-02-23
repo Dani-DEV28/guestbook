@@ -36,7 +36,7 @@ app.post('/return-contact', (req, res) => {
     res.render('home', {contact: req.body})
 });
 
-app.get('/admin/orders', (req, res) => {
+app.get('/admin/', (req, res) => {
     res.send(orders)
 });
 
